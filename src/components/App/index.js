@@ -1,4 +1,4 @@
-import DisplayBlog from '../DisplayBlog';
+import Display from "../Display"
 import NavBar from '../NavBar';
 import './index.css';
 
@@ -6,11 +6,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <DisplayBlog />
-      <DisplayBlog />
-      <DisplayBlog />
-      <DisplayBlog />
-      
+      <Display />
     </div>
   );
 }
