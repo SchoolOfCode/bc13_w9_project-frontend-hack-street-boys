@@ -76,7 +76,7 @@ function Display({ postDB, deletePost }) {
             setCommentDB={setCommentDB}
             comments={array}
             topic={currentpost.topic}
-            week={currentpost.week}
+            week={currentpost.week_number}
             postText={currentpost.post_text}
             deleteComment={deleteComment}
             deletePost={deletePost}

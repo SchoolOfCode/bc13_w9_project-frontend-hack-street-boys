@@ -10,8 +10,6 @@ function AddComment({ createComment, postId }) {
 
   return (
     <form className="add-comment">
-      <label>
-        New Comment
         <input
           onChange={(e) => {
             setAddComment(e.target.value);
@@ -19,7 +17,6 @@ function AddComment({ createComment, postId }) {
           type="text"
           placeholder="New comment.."
         ></input>
-      </label>
       <button type="button" onClick={handleNewComment}>
         New Comment
       </button>

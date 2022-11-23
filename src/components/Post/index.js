@@ -16,9 +16,9 @@ function Post({
   return (
     <div className="post">
       <div>
-        <p>{topic}</p>
-        <p>{week}</p>
-        <button classname="deletebutton"
+        <h3>Week {week}</h3>
+        <h3>{topic}</h3>
+        <button className="deletebutton"
           onClick={() => {
             deletePost(id);
           }}
@@ -26,7 +26,7 @@ function Post({
           Delete
         </button>
       </div>
-      <p>{postText}</p>
+      <p className="post-text">{postText}</p>
       <div className="comments">
         {comments.map(function (currentItem) {
           return (

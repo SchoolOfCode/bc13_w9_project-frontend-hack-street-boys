@@ -8,6 +8,7 @@ function Comment({ commentId, comment, deleteComment }) {
   return (
     <div className="comment">
       <p>{comment}</p>
+      <div className="comment-buttons">
       <button
         onClick={() => {
           textShow();
@@ -22,6 +23,8 @@ function Comment({ commentId, comment, deleteComment }) {
       >
         Delete
       </button>
+      </div>
+    
     </div>
   );
 }
