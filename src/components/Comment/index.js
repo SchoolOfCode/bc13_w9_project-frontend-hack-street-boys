@@ -1,6 +1,6 @@
 import "./index.css";
 
-function Comment({ commentId, comment_text, deleteComment }) {
+function Comment({ commentId, comment, deleteComment }) {
   
   function textShow() {
     console.log('I was clicked')
@@ -10,7 +10,7 @@ function Comment({ commentId, comment_text, deleteComment }) {
   
   return (
     <div className="comment">
-      <p>{comment_text}</p>
+      <p>{comment}</p>
       <button onClick={() => { textShow() }}>Edit</button>
       <button
         onClick={() => {

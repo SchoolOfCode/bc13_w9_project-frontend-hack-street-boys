@@ -23,7 +23,7 @@ function Post({
         {comments.map(function (currentItem) {
           return (
             <Comment
-              comment_text={currentItem.comment_text}
+              comment={currentItem.comment}
               commentId={currentItem.id}
               deleteComment={deleteComment}
             />

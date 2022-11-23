@@ -118,3 +118,9 @@ const [commentDB, setCommentDB] = useState('')
 PROPS 
 Send down setCommentDB
 
+backend post structure:
+
+{id: 2, user_id: 2, post_text: 'Components let you split the UI into independent, …can find a detailed component API reference here.', week_number: 7, topic: 'components'}
+
+backend comment structure:
+{id: 1, user_id: 1, post_id: 1, comment: 'that was cool!'}
