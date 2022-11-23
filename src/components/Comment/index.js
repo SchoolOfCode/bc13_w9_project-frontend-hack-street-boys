@@ -1,11 +1,24 @@
-import './index.css';
+import "./index.css";
 
-function Comment() {
+function Comment({ commentId, comment_text, deleteComment }) {
+  
+  function textShow() {
+    console.log('I was clicked')
+    return( <p>yoooo</p>)
+  }
+  
+  
   return (
     <div className="comment">
-      <p>This is comment 1</p>
-      <button>Edit</button>
-      <button>Delete</button>
+      <p>{comment_text}</p>
+      <button onClick={() => { textShow() }}>Edit</button>
+      <button
+        onClick={() => {
+          deleteComment(commentId);
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 }

@@ -5,28 +5,40 @@ import { useState } from "react";
 //import comment DATABASE
 const COMMENT = [
   {
-    id: 1,
+    id: 4,
     users_id: 8,
-    post_id: 4,
+    post_id: 44,
     comment_text: "Any extra resources for this?",
   },
-  { id: 2, users_id: 6, post_id: 5, comment_text: "This course is Epic!!!" },
+  { id: 55, users_id: 6, post_id: 5, comment_text: "This course is Epic!!!" },
 ];
+
+
 
 //FILTER EVERYTHING
 
 function Display({ postDB }) {
   const [commentDB, setCommentDB] = useState(COMMENT);
-
+console.log(commentDB);
+  //Add new Comment
   function handleClick(newComment, postId) {
     const Obj = {
-      id: 3,
+      id: 2,
       users_id: 8,
       post_id: postId,
       comment_text: newComment,
     };
     setCommentDB([...commentDB, Obj]);
     console.log("commentDB", commentDB);
+  }
+
+  //Delete Comment
+  function deleteComment(id) {
+    for (let i = 0; i < commentDB.length; i++){
+      if (commentDB[i].id === id) {
+        setCommentDB([...commentDB.splice(0, i), ...commentDB.splice(i+1)]);
+      }
+    }
   }
 
   return (
@@ -59,6 +71,7 @@ function Display({ postDB }) {
             topic={currentpost.topic}
             week={currentpost.week}
             postText={currentpost.post_text}
+            deleteComment={deleteComment}
           />
         );
       })}
