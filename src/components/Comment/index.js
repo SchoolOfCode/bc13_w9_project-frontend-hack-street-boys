@@ -35,6 +35,7 @@ function Comment({
       >
         {comment}
       </p>
+      <div className="comment-buttons">
       <button onClick={handleClick}>{editButtonText}</button>
       {/* {canEdit && (
         <div>
