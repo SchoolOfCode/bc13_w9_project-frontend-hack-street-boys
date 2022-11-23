@@ -11,12 +11,14 @@ function Post({
   id,
   handleClick,
   deleteComment,
+  deletePost,
 }) {
   return (
     <div className="post">
       <div>
         <p>{topic}</p>
         <p>{week}</p>
+        <button onClick={()=>{deletePost(id)}}>Delete</button>
       </div>
       <p>{postText}</p>
       <div className="comments">

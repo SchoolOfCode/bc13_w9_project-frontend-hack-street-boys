@@ -16,7 +16,7 @@ import { useState, useEffect } from "react";
 
 //FILTER EVERYTHING
 
-function Display({ postDB }) {
+function Display({ postDB, deletePost }) {
   const [commentDB, setCommentDB] = useState([]);
 
   useEffect(() => {
@@ -80,6 +80,7 @@ function Display({ postDB }) {
             week={currentpost.week}
             postText={currentpost.post_text}
             deleteComment={deleteComment}
+            deletePost={deletePost}
           />
         );
       })}

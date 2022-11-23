@@ -54,12 +54,20 @@ function App() {
     };
     createPost(newObj)
     }
+    async function deletePost(id) {
+      await fetch(`http://localhost:3001/api/posts/${id}`, {
+        method: "DELETE",
+      });
+      const response = await fetch(`http://localhost:3001/api/posts`);
+      const data = await response.json();
+      setPostDB(data.payload);
+    }
 
   return (
     <div className="App">
       <NavBar />
-      <CreatePost handleClick={handleClick} />
-      <Display postDB={postDB} />
+      <CreatePost handleClick={handleClick}/>
+      <Display postDB={postDB}  deletePost={deletePost} />
     </div>
   );
 }
