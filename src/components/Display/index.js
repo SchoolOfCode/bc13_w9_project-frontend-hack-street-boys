@@ -14,22 +14,21 @@ import { useState, useEffect } from "react";
 // ];
 //{id: 1, user_id: 1, post_id: 1, comment: 'that was cool!'}
 
-
 //FILTER EVERYTHING
 
 function Display({ postDB }) {
   const [commentDB, setCommentDB] = useState([]);
-  
+
   useEffect(() => {
     async function getComments() {
       const response = await fetch(`http://localhost:3001/api/comments`);
       const data = await response.json();
-      console.log("comment data", data.payload)
+      // console.log("comment data", data.payload);
       setCommentDB(data.payload);
-    }   
+    }
     getComments();
   }, []);
-    //Add new Comment
+  //Add new Comment
   function handleClick(newComment, postId) {
     const Obj = {
       id: 2,
@@ -40,14 +39,14 @@ function Display({ postDB }) {
     setCommentDB([...commentDB, Obj]);
     console.log("commentDB", commentDB);
   }
-  console.log(postDB)
-  //Delete Comment
-  function deleteComment(id) {
-    for (let i = 0; i < commentDB.length; i++){
-      if (commentDB[i].id === id) {
-        setCommentDB([...commentDB.splice(0, i), ...commentDB.splice(i+1)]);
-      }
-    }
+
+  async function deleteComment(id) {
+    await fetch(`http://localhost:3001/api/comments/${id}`, {
+      method: "DELETE",
+    });
+    const response = await fetch(`http://localhost:3001/api/comments`);
+    const data = await response.json();
+    setCommentDB(data.payload);
   }
 
   return (
