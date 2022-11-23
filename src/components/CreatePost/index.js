@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import './index.css'
 
 export default function CreatePost({ handleClick }) {
   const [topic, setTopic] = useState("");
@@ -10,38 +11,46 @@ export default function CreatePost({ handleClick }) {
     handleClick(topic, week, post);
   }
   return (
-    <div>
-      <label>
-        Week
-        <input
-          onChange={(e) => {
-            setWeek(e.target.value);
-          }}
-          type="text"
-          placeholder="Week"
-        ></input>
-      </label>
-      <label>
-        Topic
-        <input
-          onChange={(e) => {
-            setTopic(e.target.value);
-          }}
-          type="text"
-          placeholder="Topic"
-        ></input>
-      </label>
-      <label>
-        Post
-        <input
+    <div className="create-post">
+      <div>
+        <div className="post-details">
+          <select
+              onChange={(e) => {
+                setWeek(e.target.value);
+              }}
+              placeholder="Week"
+          >
+            <option>Week</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+          </select>
+          <input
+              onChange={(e) => {
+                setTopic(e.target.value);
+              }}
+              type="text"
+              placeholder="Enter Topic..."
+            >
+          </input>
+        </div>
+        <div>
+          <button onClick={handleNewPost}>Create Post</button>
+        </div>
+      </div>
+        <textarea
           onChange={(e) => {
             setPost(e.target.value);
           }}
           type="text"
-          placeholder="Post here.."
-        ></input>
-      </label>
-      <button onClick={handleNewPost}>Create Post</button>
+          placeholder="Write a New Post Here..."
+        >
+        </textarea>
     </div>
   );
 }

@@ -52,7 +52,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="app">
       <NavBar />
       <CreatePost handleClick={handleClick} />
       <Display postDB={postDB} deletePost={deletePost} />

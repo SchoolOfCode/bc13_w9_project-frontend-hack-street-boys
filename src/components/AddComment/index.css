@@ -1,19 +1,32 @@
 .add-comment{
     display:flex;
-   
     justify-content: center;
     align-items: center;
     gap:7px;
 }
 .add-comment > button{
     text-decoration: none;
-    border-radius: 12px;
-    display:inline-block;
-    margin-right: 7px;
+    border-radius: 15px;
+    display: inline-block;
+    background-color: #A8DADC;
+    border: none;
+    margin-left: 10px;
+    text-align: center;
+    min-height: 40px;
+    font-size: 14px;
+    width: 20%;
 }
 .add-comment > input{
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 15px;
     display:inline-block;
     margin-right: 7px;
+    width: 80%;
+    min-height: 40px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.add-comment > button:hover {
+    background-color: #76b5b7;
 }

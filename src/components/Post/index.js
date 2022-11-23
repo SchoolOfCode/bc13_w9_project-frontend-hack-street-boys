@@ -19,12 +19,12 @@ function Post({
       <div>
         <h3>Week {week}</h3>
         <h3>{topic}</h3>
-        <button className="deletebutton"
+        <button className="delete-button"
           onClick={() => {
             deletePost(id);
           }}
         >
-          Delete
+          ❌
         </button>
       </div>
       <p className="post-text">{postText}</p>
