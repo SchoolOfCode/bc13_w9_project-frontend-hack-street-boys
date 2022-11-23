@@ -23,7 +23,6 @@ import { useEffect, useState } from "react";
 function App() {
   const [postDB, setPostDB] = useState([]);
 
-
   useEffect(() => {
     async function getPosts() {
       const response = await fetch(`http://localhost:3001/api/posts`);
@@ -31,20 +30,30 @@ function App() {
       console.log(data.payload)
       setPostDB(data.payload);
     }
-  
     getPosts();
   }, []);
+
+  async function createPost(newObj) {
+    await fetch('http://localhost:3001/api/posts', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'}, 
+        mode: 'cors', 
+        body: JSON.stringify(newObj)
+    })
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    setPostDB(data.payload);
+  };
+
   function handleClick(topic, week, post) {
     const newObj = {
-      id: 2,
-      week: Number(week),
+      user_id: 1,
+      week_number: Number(week),
       topic: topic,
       post_text: post,
     };
-    //API POST
-    setPostDB([...postDB, newObj]);
-    console.log("postDB", postDB);
-  }
+    createPost(newObj)
+    }
 
   return (
     <div className="App">
