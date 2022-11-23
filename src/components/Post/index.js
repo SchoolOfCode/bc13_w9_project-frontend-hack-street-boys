@@ -9,7 +9,7 @@ function Post({
   postText,
   week,
   id,
-  handleClick,
+  createComment,
   deleteComment,
   deletePost,
 }) {
@@ -18,7 +18,13 @@ function Post({
       <div>
         <p>{topic}</p>
         <p>{week}</p>
-        <button onClick={()=>{deletePost(id)}}>Delete</button>
+        <button
+          onClick={() => {
+            deletePost(id);
+          }}
+        >
+          Delete
+        </button>
       </div>
       <p>{postText}</p>
       <div className="comments">
@@ -33,7 +39,7 @@ function Post({
         })}
       </div>
       <AddComment
-        handleClick={handleClick}
+        createComment={createComment}
         postId={id}
         setCommentDB={setCommentDB}
       />

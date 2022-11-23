@@ -3,7 +3,6 @@ import "./index.css";
 function Comment({ commentId, comment, deleteComment }) {
   function textShow() {
     console.log("I was clicked");
-    return <p>yoooo</p>;
   }
 
   return (

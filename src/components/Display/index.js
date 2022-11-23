@@ -2,16 +2,7 @@ import "./index.css";
 import Post from "../Post/index.js";
 import { useState, useEffect } from "react";
 
-//import comment DATABASE
-// const COMMENT = [
-//   {
-//     id: 4,
-//     users_id: 8,
-//     post_id: 44,
-//     comment_text: "Any extra resources for this?",
-//   },
-//   { id: 55, user_id: 6, post_id: 5, comment: "This course is Epic!!!" },
-// ];
+//Comment object structure
 //{id: 1, user_id: 1, post_id: 1, comment: 'that was cool!'}
 
 //FILTER EVERYTHING
@@ -19,27 +10,35 @@ import { useState, useEffect } from "react";
 function Display({ postDB, deletePost }) {
   const [commentDB, setCommentDB] = useState([]);
 
+  //GET ALL COMMENTS
   useEffect(() => {
     async function getComments() {
       const response = await fetch(`http://localhost:3001/api/comments`);
       const data = await response.json();
-      // console.log("comment data", data.payload);
       setCommentDB(data.payload);
     }
     getComments();
   }, []);
-  //Add new Comment
-  function handleClick(newComment, postId) {
-    const Obj = {
-      id: 2,
-      user_id: 8,
+
+  // POST A COMMENT
+  async function createComment(addComment, postId) {
+    const newObj = {
+      user_id: 2,
       post_id: postId,
-      comment: newComment,
+      comment: addComment,
     };
-    setCommentDB([...commentDB, Obj]);
-    console.log("commentDB", commentDB);
+    await fetch("http://localhost:3001/api/comments", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      mode: "cors",
+      body: JSON.stringify(newObj),
+    });
+    const response = await fetch(`http://localhost:3001/api/comments`);
+    const data = await response.json();
+    setCommentDB(data.payload);
   }
 
+  // DELETE A COMMENT
   async function deleteComment(id) {
     await fetch(`http://localhost:3001/api/comments/${id}`, {
       method: "DELETE",
@@ -72,7 +71,7 @@ function Display({ postDB, deletePost }) {
         }
         return (
           <Post
-            handleClick={handleClick}
+            createComment={createComment}
             id={currentpost.id}
             setCommentDB={setCommentDB}
             comments={array}

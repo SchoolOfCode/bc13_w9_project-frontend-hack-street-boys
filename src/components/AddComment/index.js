@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./index.css";
 
-function AddComment({ handleClick, postId }) {
+function AddComment({ createComment, postId }) {
   const [addComment, setAddComment] = useState("");
 
   function handleNewComment() {
-    handleClick(addComment, postId);
+    createComment(addComment, postId);
   }
 
   return (
@@ -20,7 +20,9 @@ function AddComment({ handleClick, postId }) {
           placeholder="New comment.."
         ></input>
       </label>
-      <button type='button' onClick={handleNewComment}>New Comment</button>
+      <button type="button" onClick={handleNewComment}>
+        New Comment
+      </button>
     </form>
   );
 }
