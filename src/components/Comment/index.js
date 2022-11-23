@@ -1,21 +1,46 @@
 import "./index.css";
+import { useState } from "react";
 
-function Comment({ commentId, comment, deleteComment }) {
-  function textShow() {
-    console.log("I was clicked");
+function Comment({
+  editComment,
+  userId,
+  postId,
+  commentId,
+  comment,
+  deleteComment,
+}) {
+  const [canEdit, setCanEdit] = useState(false);
+  const [editCommentText, setEditCommentText] = useState(comment);
+  const [editButtonText, setEditButtonText] = useState('Edit')
+  console.log("editCommentText", editCommentText);
+  function handleClick() {
+    if (canEdit === true) {
+      editComment(commentId, userId, postId, editCommentText);
+      setCanEdit(!canEdit)
+      setEditButtonText('Edit')
+    } else {
+      setCanEdit(!canEdit);
+      setEditButtonText("Save");
+      //change textcontent to save
+    }
   }
 
   return (
     <div className="comment">
-      <p>{comment}</p>
-      <div className="comment-buttons">
-      <button
-        onClick={() => {
-          textShow();
-        }}
+
+      <p
+        contentEditable={canEdit}
+        onInput={(e) => setEditCommentText(e.currentTarget.textContent)}
+
       >
-        Edit
-      </button>
+        {comment}
+      </p>
+      <button onClick={handleClick}>{editButtonText}</button>
+      {/* {canEdit && (
+        <div>
+          <input placeholder="Edit your comment"></input>
+        </div>
+      )} */}
       <button
         onClick={() => {
           deleteComment(commentId);

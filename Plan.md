@@ -165,3 +165,6 @@ const response = await fetch(`http://localhost:3001/api/posts`);
 const data = await response.json();
 setPostDB(data.payload);
 };
+
+Create a function in display that is propped down
+if canEdit is true and button is true - inside of toggle it does a patch request. 

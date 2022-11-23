@@ -48,6 +48,25 @@ function Display({ postDB, deletePost }) {
     setCommentDB(data.payload);
   }
 
+  //PATCH A COMMENT
+  async function editComment(commentId, user_id, postId, commentText) {
+    const newObj = {
+      id: commentId,
+      user_id: user_id,
+      post_id: postId,
+      comment: commentText,
+    };
+    await fetch(`http://localhost:3001/api/comments/${commentId}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      mode: "cors",
+      body: JSON.stringify(newObj),
+    });
+    const response = await fetch(`http://localhost:3001/api/comments`);
+    const data = await response.json();
+    setCommentDB(data.payload);
+  }
+
   return (
     <div className="posts">
       <select>
@@ -71,6 +90,7 @@ function Display({ postDB, deletePost }) {
         }
         return (
           <Post
+            editComment={editComment}
             createComment={createComment}
             id={currentpost.id}
             setCommentDB={setCommentDB}

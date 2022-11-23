@@ -12,6 +12,7 @@ function Post({
   createComment,
   deleteComment,
   deletePost,
+  editComment,
 }) {
   return (
     <div className="post">
@@ -31,6 +32,9 @@ function Post({
         {comments.map(function (currentItem) {
           return (
             <Comment
+              editComment={editComment}
+              userId={currentItem.user_id}
+              postId={id}
               comment={currentItem.comment}
               commentId={currentItem.id}
               deleteComment={deleteComment}
