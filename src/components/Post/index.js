@@ -18,7 +18,7 @@ function Post({
       <div>
         <p>{topic}</p>
         <p>{week}</p>
-        <button
+        <button classname="deletebutton"
           onClick={() => {
             deletePost(id);
           }}

@@ -1,5 +1,18 @@
 .post{
+    background-color: #1d3557;
+    width: 75%;
+    border: 2px solid black;
+    border-radius: 25px;
+}
+.post > div:first-child{
     background-color: white;
-    width: 50%;
-    
+    display:flex;
+    justify-content: space-between;
+    border-radius: 25px;
+    padding: 5px 8px 8px 5px;
+}
+.deletebutton{
+    text-decoration: none;
+    border-radius: 25px;
+    display:inline-block
 }
