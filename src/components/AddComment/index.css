@@ -1,0 +1,19 @@
+.add-comment{
+    display:flex;
+   
+    justify-content: center;
+    align-items: center;
+    gap:7px;
+}
+.add-comment > button{
+    text-decoration: none;
+    border-radius: 12px;
+    display:inline-block;
+    margin-right: 7px;
+}
+.add-comment > input{
+    text-decoration: none;
+    border-radius: 12px;
+    display:inline-block;
+    margin-right: 7px;
+}

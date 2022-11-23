@@ -1,0 +1,12 @@
+.navbar{
+    background-color: #1d3557;
+    display:flex;
+
+}
+.navbar> button{
+    text-decoration: none;
+    border-radius: 12px;
+    display:inline-block;
+    display: flex;
+    flex-direction: row-reverse;
+}

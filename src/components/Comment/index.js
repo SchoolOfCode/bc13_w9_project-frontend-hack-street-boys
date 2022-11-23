@@ -27,9 +27,11 @@ function Comment({
 
   return (
     <div className="comment">
+
       <p
         contentEditable={canEdit}
         onInput={(e) => setEditCommentText(e.currentTarget.textContent)}
+
       >
         {comment}
       </p>
@@ -46,6 +48,8 @@ function Comment({
       >
         Delete
       </button>
+      </div>
+    
     </div>
   );
 }

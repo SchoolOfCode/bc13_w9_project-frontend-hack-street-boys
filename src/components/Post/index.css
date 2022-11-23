@@ -3,6 +3,10 @@
     width: 75%;
     border: 2px solid black;
     border-radius: 25px;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding: 10px;
 }
 .post > div:first-child{
     background-color: white;
@@ -13,6 +17,11 @@
 }
 .deletebutton{
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 12px;
     display:inline-block
+}
+.post-text{
+    background-color: white;
+    border-radius: 25px;
+    
 }
