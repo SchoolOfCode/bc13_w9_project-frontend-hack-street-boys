@@ -26,15 +26,18 @@ function Post({
   const [editPostWeek, setEditPostWeek] = useState(week);
   const [editPostTopic, setEditPostTopic] = useState(topic);
   const [editButtonText, setEditButtonText] = useState("✏️");
-
+  const [editableClass, setEditableClass] = useState("not-editable");
+  
   function handlePostEdit() {
     if (canEdit === true) {
       editPost(id, userIdPost, editPostText, editPostWeek, editPostTopic);
       setCanEdit(!canEdit);
       setEditButtonText("✏️");
+      setEditableClass("not-editable")
     } else {
       setCanEdit(!canEdit);
       setEditButtonText("💾");
+      setEditableClass("editable")
       //change textcontent to save
     }
   }
@@ -46,6 +49,7 @@ function Post({
           Week{" "}
           <span
             contentEditable={canEdit}
+            className={editableClass}
             onInput={(e) => setEditPostWeek(e.currentTarget.textContent)}
           >
             {week}
@@ -53,6 +57,7 @@ function Post({
         </h3>
         <h3
           contentEditable={canEdit}
+          className={editableClass}
           onInput={(e) => setEditPostTopic(e.currentTarget.textContent)}
         >
           {topic}
@@ -70,7 +75,7 @@ function Post({
         </div>
       </div>
       <p
-        className="post-text"
+        className={editableClass}
         contentEditable={canEdit}
         onInput={(e) => setEditPostText(e.currentTarget.textContent)}
       >

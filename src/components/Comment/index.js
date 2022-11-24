@@ -12,36 +12,32 @@ function Comment({
   const [canEdit, setCanEdit] = useState(false);
   const [editCommentText, setEditCommentText] = useState(comment);
   const [editButtonText, setEditButtonText] = useState('✏️')
-  console.log("editCommentText", editCommentText);
+  const [editableClass, setEditableClass] = useState("not-editable");
+
   function handleClick() {
     if (canEdit === true) {
       editComment(commentId, userId, postId, editCommentText);
-      setCanEdit(!canEdit)
-      setEditButtonText('✏️')
+      setCanEdit(!canEdit);
+      setEditButtonText('✏️');
+      setEditableClass("not-editable");
     } else {
       setCanEdit(!canEdit);
       setEditButtonText("💾");
-      //change textcontent to save
+      setEditableClass("editable");
     }
   }
 
   return (
     <div className="comment">
-
       <p
         contentEditable={canEdit}
+        className={editableClass}
         onInput={(e) => setEditCommentText(e.currentTarget.textContent)}
-
       >
         {comment}
       </p>
       <div className="comment-buttons">
       <button onClick={handleClick}>{editButtonText}</button>
-      {/* {canEdit && (
-        <div>
-          <input placeholder="Edit your comment"></input>
-        </div>
-      )} */}
       <button
         onClick={() => {
           deleteComment(commentId);

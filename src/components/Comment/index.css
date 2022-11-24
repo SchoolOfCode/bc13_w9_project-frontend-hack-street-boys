@@ -32,6 +32,8 @@
     margin-top: 10px;
 }
 
-.editing {
-    background-color: yellow;
+.editable {
+    padding:10px;
+    border:0;
+    box-shadow:0 0 10px 4px rgba(3, 3, 3, 0.673);
 }
