@@ -10,6 +10,18 @@ import { useState, useEffect } from "react";
 function Display({ postDB, deletePost, editPost }) {
   const [commentDB, setCommentDB] = useState([]);
 
+  //CHECKS IF POSTS HAVE COMMENTS
+  async function checkComments(id) {
+    for (let i = 0; i < commentDB.length; i++) {
+      if (commentDB[i].post_id === id) {
+        await fetch(`http://localhost:3001/api/comments/${commentDB[i].id}`, {
+          method: "DELETE",
+        });
+      }
+    }
+    deletePost(id);
+  }
+
   //GET ALL COMMENTS
   useEffect(() => {
     async function getComments() {
@@ -77,23 +89,24 @@ function Display({ postDB, deletePost, editPost }) {
               array.push(commentDB[i]);
             }
           }
-        return (
-          <Post
-            editPost={editPost}
-            editComment={editComment}
-            createComment={createComment}
-            id={currentpost.id}
-            setCommentDB={setCommentDB}
-            comments={array}
-            topic={currentpost.topic}
-            week={currentpost.week_number}
-            postText={currentpost.post_text}
-            userIdPost={currentpost.user_id}
-            deleteComment={deleteComment}
-            deletePost={deletePost}
-          />
-        );
-      })}
+          return (
+            <Post
+              checkComments={checkComments}
+              editPost={editPost}
+              editComment={editComment}
+              createComment={createComment}
+              id={currentpost.id}
+              setCommentDB={setCommentDB}
+              comments={array}
+              topic={currentpost.topic}
+              week={currentpost.week_number}
+              postText={currentpost.post_text}
+              userIdPost={currentpost.user_id}
+              deleteComment={deleteComment}
+              deletePost={deletePost}
+            />
+          );
+        })}
       </div>
     </div>
   );

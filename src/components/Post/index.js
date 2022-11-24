@@ -19,6 +19,7 @@ function Post({
   editComment,
   userIdPost,
   editPost,
+  checkComments,
 }) {
   const [canEdit, setCanEdit] = useState(false);
   const [editPostText, setEditPostText] = useState(postText);
@@ -61,7 +62,7 @@ function Post({
           <button
             className="delete-button"
             onClick={() => {
-              deletePost(id);
+              checkComments(id);
             }}
           >
             ❌

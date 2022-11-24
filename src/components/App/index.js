@@ -115,6 +115,10 @@ function App() {
     setPostDB(data.payload);
   }
 
+  // User press POST delete
+  // call the del comment function which is defined in display compontent and passed down to post 
+  // handleclick which first calls deletecomment function then calls the delete post function for that post_id
+
   //PACTH A POST
   async function editPost(id, userIdPost, editPostText, week, topic) {
     const newObj = {
