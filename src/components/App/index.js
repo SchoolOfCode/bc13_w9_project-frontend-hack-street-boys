@@ -3,12 +3,12 @@ import NavBar from "../NavBar";
 import CreatePost from "../CreatePost";
 import "./index.css";
 import { useEffect, useState } from "react";
-// import AsyncSelect from "react-select/async";
 import Select from "react-select";
+// import AsyncSelect from "react-select/async";
 
 function App() {
   const [postDB, setPostDB] = useState([]);
-  const [topicOption, setTopicOption] = useState([""]);
+  const [topicOption, setTopicOption] = useState("");
   const [weekOption, setWeekOption] = useState("");
 
   //GET ALL POSTS
@@ -28,7 +28,10 @@ function App() {
       });
 
       //Creates new object with label needed for Week DropDown to work
-
+      arrWeek.push({
+        value: "Week",
+        label: "Week",
+      });
       result.map((post) => {
         return arrWeek.push({
           value: post.week_number,
@@ -40,13 +43,10 @@ function App() {
       const uniqueTopics = [];
       const unique = arrTopic.filter((element) => {
         const isDuplicate = uniqueTopics.includes(element.label);
-
         if (!isDuplicate) {
           uniqueTopics.push(element.label);
-
           return true;
         }
-
         return false;
       });
 
@@ -56,10 +56,8 @@ function App() {
         const isDuplicate = uniqueWeeks.includes(element.label);
         if (!isDuplicate) {
           uniqueWeeks.push(element.label);
-
           return true;
         }
-
         return false;
       });
 
@@ -138,37 +136,95 @@ function App() {
   }
 
   //Filter out the selected topic dropdown in postDB
-  const handleTopic = (selected) => {
-    console.log("selected topic", selected.label);
-    const dropDownTopic = postDB.filter((obj) => {
-      return obj.topic === Number(selected.label);
+  const handleTopic = async (selected) => {
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    const payload = data.payload
+    const dropDownTopic = payload.filter((obj) => {
+      return obj.topic === selected.label;
     });
-    console.log("dropDownTopic", dropDownTopic);
+    setPostDB(dropDownTopic)
+    const arrWeek = [];
+    dropDownTopic.map((post) => {
+      return arrWeek.push({
+        value: post.week_number,
+        label: post.week_number,
+      });
+    });
+    const uniqueWeeks = [];
+    const uniqueWeek = arrWeek.filter((element) => {
+      const isDuplicate = uniqueWeeks.includes(element.label);
+      if (!isDuplicate) {
+        uniqueWeeks.push(element.label);
+        return true;
+      }
+      return false;
+    });
+    setWeekOption(
+      uniqueWeek.sort((a, b) => {
+        return a.label - b.label;
+      })
+    );
   };
 
   //Filters out the selected week dropdown in postDB
-  const handleWeek = (selected) => {
-    console.log("selected week", selected.label);
-    const dropDownWeek = postDB.filter((obj) => {
+  const handleWeek = async (selected) => {
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    const payload = data.payload
+    const dropDownWeek = payload.filter((obj) => {
       return obj.week_number === Number(selected.label);
     });
-    console.log("dropDownWeek", dropDownWeek);
+    setPostDB(dropDownWeek);
+    const arrTopic = [];
+    dropDownWeek.map((post) => {
+      return arrTopic.push({ value: post.topic, label: post.topic });
+    });
+    const uniqueTopics = [];
+    const unique = arrTopic.filter((element) => {
+      const isDuplicate = uniqueTopics.includes(element.label);
+      if (!isDuplicate) {
+        uniqueTopics.push(element.label);
+        return true;
+      }
+      return false;
+    });
+    setTopicOption(
+      unique.sort((a, b) => {
+        return a.label.toLowerCase() > b.label.toLowerCase()
+          ? 1
+          : a.label.toLowerCase() < b.label.toLowerCase()
+          ? -1
+          : 0;
+      })
+    );
   };
+
+  const handleReset = async () => {
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    let result = data.payload;
+    setPostDB(result);
+  }
 
   return (
     <div className="app">
       <NavBar />
       <CreatePost handleClick={handleClick} />
-      <Select
-        options={topicOption}
-        placeholder="Filter Topic"
-        onChange={handleTopic}
-      />
-      <Select
-        options={weekOption}
-        placeholder="Filter Week"
-        onChange={handleWeek}
-      />
+      <div className="filters">
+      <h3>Filter By:</h3>
+        <Select
+          options={weekOption}
+          placeholder="Week"
+          onChange={handleWeek}
+        />
+        <Select
+          options={topicOption}
+          placeholder="Topic"
+          onChange={handleTopic}
+        />
+        <button onClick={handleReset}>Reset Filters</button>
+      </div>
       <Display editPost={editPost} postDB={postDB} deletePost={deletePost} />
     </div>
   );

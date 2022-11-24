@@ -69,21 +69,6 @@ function Display({ postDB, deletePost, editPost }) {
 
   return (
     <div className="display">
-      <div className="filters">
-        <h3>Filter By:</h3>
-        <select>
-          <option>Week</option>
-          <option>Week 1</option>
-          <option>Week 2</option>
-          <option>Week 3</option>
-        </select>
-        <select>
-          <option>Topic</option>
-          <option>useSate</option>
-          <option>useReducer</option>
-          <option>useEffect</option>
-        </select>
-      </div>
       <div className="posts">
         {postDB.map(function (currentpost) {
           let array = [];

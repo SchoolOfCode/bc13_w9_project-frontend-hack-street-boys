@@ -24,16 +24,16 @@ function Post({
   const [editPostText, setEditPostText] = useState(postText);
   const [editPostWeek, setEditPostWeek] = useState(week);
   const [editPostTopic, setEditPostTopic] = useState(topic);
-  const [editButtonText, setEditButtonText] = useState("Edit");
+  const [editButtonText, setEditButtonText] = useState("✏️");
 
   function handlePostEdit() {
     if (canEdit === true) {
       editPost(id, userIdPost, editPostText, editPostWeek, editPostTopic);
       setCanEdit(!canEdit);
-      setEditButtonText("Edit");
+      setEditButtonText("✏️");
     } else {
       setCanEdit(!canEdit);
-      setEditButtonText("Save");
+      setEditButtonText("💾");
       //change textcontent to save
     }
   }
@@ -57,6 +57,7 @@ function Post({
           {topic}
         </h3>
         <div className="buttons">
+          <button onClick={handlePostEdit}>{editButtonText}</button>
           <button
             className="delete-button"
             onClick={() => {
@@ -65,7 +66,6 @@ function Post({
           >
             ❌
           </button>
-          <button onClick={handlePostEdit}>{editButtonText}</button>
         </div>
       </div>
       <p
