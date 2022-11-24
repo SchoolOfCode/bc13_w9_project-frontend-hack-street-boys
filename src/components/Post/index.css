@@ -16,7 +16,14 @@
     border-radius: 15px;
     padding: 0px 10px;
 }
-.delete-button{
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+}
+.buttons > button{
     text-decoration: none;
     border-radius: 15px;
     display:inline-block;
@@ -29,7 +36,7 @@
     width: auto;
 }
 
-.delete-button:hover {
+.buttons > button:hover {
     background-color: #76b5b7;
 }
 

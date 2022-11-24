@@ -56,15 +56,17 @@ function Post({
         >
           {topic}
         </h3>
-        <button
-          className="delete-button"
-          onClick={() => {
-            deletePost(id);
-          }}
-        >
-          ❌
-        </button>
-        <button onClick={handlePostEdit}>{editButtonText}</button>
+        <div className="buttons">
+          <button
+            className="delete-button"
+            onClick={() => {
+              deletePost(id);
+            }}
+          >
+            ❌
+          </button>
+          <button onClick={handlePostEdit}>{editButtonText}</button>
+        </div>
       </div>
       <p
         className="post-text"

@@ -92,7 +92,6 @@ function Display({ postDB, deletePost, editPost }) {
               array.push(commentDB[i]);
             }
           }
-        }
         return (
           <Post
             editPost={editPost}
@@ -110,6 +109,7 @@ function Display({ postDB, deletePost, editPost }) {
           />
         );
       })}
+      </div>
     </div>
   );
 }
