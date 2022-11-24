@@ -19,7 +19,10 @@ function App() {
       const response = await fetch(`http://localhost:3001/api/posts`);
       const data = await response.json();
       console.log("This is data.payload", data.payload);
-      setPostDB(data.payload);
+      let sortedData = data.payload.sort((a, b) => {
+        return b.week_number - a.week_number;
+      });
+      setPostDB(sortedData);
       let result = data.payload;
 
       //Creates new object with label needed for Topic DropDown to work
@@ -92,7 +95,10 @@ function App() {
     });
     const response = await fetch(`http://localhost:3001/api/posts`);
     const data = await response.json();
-    setPostDB(data.payload);
+    let sortedData = data.payload.sort((a, b) => {
+      return b.week_number - a.week_number;
+    });
+    setPostDB(sortedData);
   }
 
   function handleClick(topic, week, post) {
@@ -112,11 +118,14 @@ function App() {
     });
     const response = await fetch(`http://localhost:3001/api/posts`);
     const data = await response.json();
-    setPostDB(data.payload);
+    let sortedData = data.payload.sort((a, b) => {
+      return b.week_number - a.week_number;
+    });
+    setPostDB(sortedData);
   }
 
   // User press POST delete
-  // call the del comment function which is defined in display compontent and passed down to post 
+  // call the del comment function which is defined in display compontent and passed down to post
   // handleclick which first calls deletecomment function then calls the delete post function for that post_id
 
   //PACTH A POST
@@ -136,18 +145,21 @@ function App() {
     });
     const response = await fetch(`http://localhost:3001/api/posts`);
     const data = await response.json();
-    setPostDB(data.payload);
+    let sortedData = data.payload.sort((a, b) => {
+      return b.week_number - a.week_number;
+    });
+    setPostDB(sortedData);
   }
 
   //Filter out the selected topic dropdown in postDB
   const handleTopic = async (selected) => {
     const response = await fetch(`http://localhost:3001/api/posts`);
     const data = await response.json();
-    const payload = data.payload
+    const payload = data.payload;
     const dropDownTopic = payload.filter((obj) => {
       return obj.topic === selected.label;
     });
-    setPostDB(dropDownTopic)
+    setPostDB(dropDownTopic);
     const arrWeek = [];
     dropDownTopic.map((post) => {
       return arrWeek.push({
@@ -175,7 +187,7 @@ function App() {
   const handleWeek = async (selected) => {
     const response = await fetch(`http://localhost:3001/api/posts`);
     const data = await response.json();
-    const payload = data.payload
+    const payload = data.payload;
     const dropDownWeek = payload.filter((obj) => {
       return obj.week_number === Number(selected.label);
     });
@@ -209,19 +221,15 @@ function App() {
     const data = await response.json();
     let result = data.payload;
     setPostDB(result);
-  }
+  };
 
   return (
     <div className="app">
       <NavBar />
       <CreatePost handleClick={handleClick} />
       <div className="filters">
-      <h3>Filter By:</h3>
-        <Select
-          options={weekOption}
-          placeholder="Week"
-          onChange={handleWeek}
-        />
+        <h3>Filter By:</h3>
+        <Select options={weekOption} placeholder="Week" onChange={handleWeek} />
         <Select
           options={topicOption}
           placeholder="Topic"
