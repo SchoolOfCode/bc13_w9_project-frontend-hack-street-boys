@@ -11,6 +11,13 @@
     width: 40px;
 }
 
+.comment-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .comment-buttons > button:hover {
     background-color: #76b5b7;
 }
