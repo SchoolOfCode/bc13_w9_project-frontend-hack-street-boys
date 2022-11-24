@@ -2,12 +2,12 @@ import "./index.css";
 import Post from "../Post/index.js";
 import { useState, useEffect } from "react";
 
-//Comment object structure
+//COMMENT STRUCTURE
 //{id: 1, user_id: 1, post_id: 1, comment: 'that was cool!'}
 
 //FILTER EVERYTHING
 
-function Display({ postDB, deletePost }) {
+function Display({ postDB, deletePost, editPost }) {
   const [commentDB, setCommentDB] = useState([]);
 
   //GET ALL COMMENTS
@@ -90,6 +90,7 @@ function Display({ postDB, deletePost }) {
         }
         return (
           <Post
+            editPost={editPost}
             editComment={editComment}
             createComment={createComment}
             id={currentpost.id}
@@ -98,6 +99,7 @@ function Display({ postDB, deletePost }) {
             topic={currentpost.topic}
             week={currentpost.week_number}
             postText={currentpost.post_text}
+            userIdPost={currentpost.user_id}
             deleteComment={deleteComment}
             deletePost={deletePost}
           />
