@@ -9,12 +9,16 @@ export default function CreatePost({ handleClick }) {
 
   function handleNewPost() {
     handleClick(topic, week, post);
+    setTopic('')
+    setWeek('')
+    setPost('')
   }
   return (
     <div className="create-post">
       <div>
         <div className="post-details">
           <select
+            value={week}
               onChange={(e) => {
                 setWeek(e.target.value);
               }}
@@ -31,6 +35,7 @@ export default function CreatePost({ handleClick }) {
             <option>8</option>
           </select>
           <input
+            value={topic}
               onChange={(e) => {
                 setTopic(e.target.value);
               }}
@@ -43,7 +48,8 @@ export default function CreatePost({ handleClick }) {
           <button onClick={handleNewPost}>Create Post</button>
         </div>
       </div>
-        <textarea
+      <textarea
+        value={post}
           onChange={(e) => {
             setPost(e.target.value);
           }}
