@@ -1,5 +1,6 @@
 # Build a static Version
 
+npm i to download cypress dependancys
 ---
 
 > NavBar
