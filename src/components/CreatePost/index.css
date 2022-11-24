@@ -1,0 +1,65 @@
+.create-post {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #1d3557;
+    width: 650px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.create-post > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+}
+
+.create-post > div > div > button {
+    text-decoration: none;
+    border-radius: 15px;
+    display:inline-block;
+    margin-left: 15px;
+    background-color: #A8DADC;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.post-details > select {
+    text-decoration: none;
+    border-radius: 15px;
+    display:inline-block;
+    background-color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.post-details > input {
+    text-decoration: none;
+    border-radius: 15px;
+    display:inline-block;
+    margin-left: 15px;
+    background-color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.create-post > textarea {
+    min-height: 200px;
+    width: 600px;
+    text-align: start;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}

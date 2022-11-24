@@ -11,16 +11,16 @@ function Comment({
 }) {
   const [canEdit, setCanEdit] = useState(false);
   const [editCommentText, setEditCommentText] = useState(comment);
-  const [editButtonText, setEditButtonText] = useState('Edit')
+  const [editButtonText, setEditButtonText] = useState('✏️')
   console.log("editCommentText", editCommentText);
   function handleClick() {
     if (canEdit === true) {
       editComment(commentId, userId, postId, editCommentText);
       setCanEdit(!canEdit)
-      setEditButtonText('Edit')
+      setEditButtonText('✏️')
     } else {
       setCanEdit(!canEdit);
-      setEditButtonText("Save");
+      setEditButtonText("💾");
       //change textcontent to save
     }
   }
@@ -47,7 +47,7 @@ function Comment({
           deleteComment(commentId);
         }}
       >
-        Delete
+        ❌
       </button>
       </div>
     

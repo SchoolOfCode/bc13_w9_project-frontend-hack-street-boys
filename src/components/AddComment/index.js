@@ -15,7 +15,7 @@ function AddComment({ createComment, postId }) {
             setAddComment(e.target.value);
           }}
           type="text"
-          placeholder="New comment.."
+          placeholder="Add a New Comment.."
         ></input>
       <button type="button" onClick={handleNewComment}>
         New Comment

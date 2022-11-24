@@ -1,12 +1,28 @@
-.navbar{
+.navbar {
     background-color: #1d3557;
     display:flex;
-
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
-.navbar> button{
-    text-decoration: none;
-    border-radius: 12px;
-    display:inline-block;
+
+.navbar > div {
     display: flex;
-    flex-direction: row-reverse;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar > div > button {
+    text-decoration: none;
+    border-radius: 15px;
+    display:inline-block;
+    margin-left: 15px;
+    background-color: #A8DADC;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
 }

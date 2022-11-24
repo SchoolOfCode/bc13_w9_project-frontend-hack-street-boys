@@ -1,15 +1,37 @@
 .comment-buttons > button{
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 15px;
     display:inline-block;
-    margin-right: 7px;
+    background-color: #A8DADC;
+    border: none;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 16px;
+    height: 40px;
+    width: 40px;
 }
+
+.comment-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-buttons > button:hover {
+    background-color: #76b5b7;
+}
+
 .comment{
     background-color: white;
-    border-radius: 20px;
+    border-radius: 15px;
     display:flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 0px 10px;
     margin-top: 10px;
+}
+
+.editing {
+    background-color: yellow;
 }
