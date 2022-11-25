@@ -19,11 +19,14 @@ describe('input to post', () => {
     cy.get('textarea')
       .type('Cypress Text post')
     cy.get("#root > div > div.create-post > div > div:nth-child(2) > button")
-    
-
+      .click()
+    cy.get("#root > div > div.filters > div:nth-child(2) > div")
+      .type("1")
+    cy.get("#root > div > div.filters > div:nth-child(3) > div") 
+    .type('Cypress Text post')
+    cy.get("#root > div > div.filters > button")
   })
 })
-
 
 
 
