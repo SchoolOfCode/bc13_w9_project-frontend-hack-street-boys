@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/App/index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/App/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Display from "../Display";
+import NavBar from "../NavBar";
+import CreatePost from "../CreatePost";
+import "./index.css";
+import { useEffect, useState } from "react";
+import Filter from '../Filter/index.js'
+
+// import AsyncSelect from "react-select/async";
+
+function App() {
+  const [postDB, setPostDB] = useState([]);
+
+  //GET ALL POSTS
+  useEffect(() => {
+    async function getPosts() {
+      const response = await fetch(`http://localhost:3001/api/posts`);
+      const data = await response.json();
+      console.log("This is data.payload", data.payload);
+      let sortedData = data.payload.sort((a, b) => {
+        return b.week_number - a.week_number;
+      });
+      setPostDB(sortedData);
+      
+    }
+    getPosts();
+  }, []);
+
+  //POST A POST
+  async function createPost(newObj) {
+    await fetch("http://localhost:3001/api/posts", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      mode: "cors",
+      body: JSON.stringify(newObj),
+    });
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    let sortedData = data.payload.sort((a, b) => {
+      return b.week_number - a.week_number;
+    });
+    setPostDB(sortedData);
+  }
+
+  /**
+   * This creates an object that can be post.
+   * @param {string} topic 
+   * @param {number} week 
+   * @param {number} post 
+   */
+
+  function handleClick(topic, week, post) {
+    const newObj = {
+      user_id: 1,
+      week_number: Number(week),
+      topic: topic,
+      post_text: post,
+    };
+    createPost(newObj);
+  }
+
+ 
+  //DELETE A POST
+  async function deletePost(id) {
+    await fetch(`http://localhost:3001/api/posts/${id}`, {
+      method: "DELETE",
+    });
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    let sortedData = data.payload.sort((a, b) => {
+      return b.week_number - a.week_number;
+    });
+    setPostDB(sortedData);
+  }
+
+  // User press POST delete
+  // call the del comment function which is defined in display compontent and passed down to post
+  // handleclick which first calls deletecomment function then calls the delete post function for that post_id
+
+  //PACTH A POST
+  async function editPost(id, userIdPost, editPostText, week, topic) {
+    const newObj = {
+      id: id,
+      user_id: userIdPost,
+      post_text: editPostText,
+      week_number: week,
+      topic: topic,
+    };
+    await fetch(`http://localhost:3001/api/posts/${id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      mode: "cors",
+      body: JSON.stringify(newObj),
+    });
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    let sortedData = data.payload.sort((a, b) => {
+      return b.week_number - a.week_number;
+    });
+    setPostDB(sortedData);
+  }
+
+  const handleReset = async () => {
+    const response = await fetch(`http://localhost:3001/api/posts`);
+    const data = await response.json();
+    let result = data.payload;
+    setPostDB(result);
+  };
+
+  return (
+    &lt;div className="app">
+      &lt;NavBar />
+      &lt;CreatePost handleClick={handleClick} />
+      &lt;div className="filters">
+        &lt;h3>Filter By:&lt;/h3>
+        &lt;Filter postDB={postDB} setPostDB={setPostDB}>&lt;/Filter>
+        &lt;button onClick={handleReset}>Reset Filters&lt;/button>
+      &lt;/div>
+      &lt;Display
+        editPost={editPost}
+        postDB={postDB}
+        deletePost={deletePost}
+        setPostDB={setPostDB}
+      />
+    &lt;/div>
+  );
+}
+
+export default App;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Owner.html">Owner</a></li></ul><h3>Global</h3><ul><li><a href="global.html#calculatePetAge">calculatePetAge</a></li><li><a href="global.html#dog">dog</a></li><li><a href="global.html#myArray">myArray</a></li><li><a href="global.html#number">number</a></li><li><a href="global.html#owner1">owner1</a></li><li><a href="global.html#pet">pet</a></li><li><a href="global.html#petName">petName</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Nov 29 2022 15:00:50 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
