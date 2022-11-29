@@ -7,33 +7,3 @@
   gap: 20px;
   box-sizing: border-box;
 }
-
-.filters {
-  display: flex;
-  padding: 10px 20px;
-  width: 100%;
-  background-color: #1d3557;
-}
-
-.filters > h3 {
-  color: white;
-}
-
-.filters > div > div {
-  border-radius: 15px;
-  margin-left: 15px;
-  border: none;
-  padding: 10px 32px;
-  text-align: center;
-  font-size: 16px;
-}
-
-.filters > button {
-  border-radius: 15px;
-  margin-left: 15px;
-  border: none;
-  background-color: white;
-  padding: 5px 32px;
-  text-align: center;
-  font-size: 16px;
-}
