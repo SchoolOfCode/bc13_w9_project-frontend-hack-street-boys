@@ -4,6 +4,9 @@ This application is aimed to assist the SOC bootcampers with finding pervious co
 
 The application allows a coach to send a post. Then the bootcampers can add comments to the posts. These comments can be deleted and editied.
 
+## Product Demo
+
+https://user-images.githubusercontent.com/109949748/204586268-69821000-ab2e-45c1-8fd9-11ed485c7c5b.mov
 
 ## Features
 
