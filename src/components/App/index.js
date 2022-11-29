@@ -9,6 +9,12 @@ function App() {
   const [postDB, setPostDB] = useState([]);
 
   useEffect(() => {
+    /**
+     * - Makes an api get request for all posts
+     * - sorts the posts in reverse week order so you see the latest one first
+     * - updates the postDB state to sorted array of posts objects
+     */
+
     async function getPosts() {
       const response = await fetch(`http://localhost:3001/api/posts`);
       const data = await response.json();
@@ -21,6 +27,12 @@ function App() {
   }, []);
 
   //POST A POST
+  /**
+   * - api post request giving the user the ability to create a post
+   * - sorts the posts in reverse week order so you see the latest one first
+   * - updates the postDB state to sorted array of posts objects
+   * @param {object} newObj
+   */
   async function createPost(newObj) {
     await fetch("http://localhost:3001/api/posts", {
       method: "POST",
@@ -36,6 +48,15 @@ function App() {
     setPostDB(sortedData);
   }
 
+  /**
+   * - handleClick function that gets passed down to the CreatePost component
+   * - stores the information inputted by the user into an object
+   * - calls the createPost function above and adds the new post (newobj)
+   * @param {string} topic
+   * @param {number} week
+   * @param {string} post
+   */
+
   function handleClick(topic, week, post) {
     const newObj = {
       user_id: 1,
@@ -47,6 +68,12 @@ function App() {
   }
 
   //DELETE A POST
+  /**
+   * - delete request to the api giving the user the ability to delete a post,
+   * - sorts the posts in reverse week order so you see the latest one first
+   * - updates the postDB and removes the deleted post
+   * @param {number} id
+   */
   async function deletePost(id) {
     await fetch(`http://localhost:3001/api/posts/${id}`, {
       method: "DELETE",
@@ -63,7 +90,17 @@ function App() {
   // call the del comment function which is defined in display compontent and passed down to post
   // handleclick which first calls deletecomment function then calls the delete post function for that post_id
 
-  //PACTH A POST
+  //PATCH A POST
+  /**
+   * - patch request to the api giving the user the ability to update a post,
+   * - sorts the posts in reverse week order so you see the latest one first
+   * - updates the postDB and shows the updated post
+   * @param {number} id
+   * @param {number} userIdPost
+   * @param {string} editPostText
+   * @param {number} week
+   * @param {string} topic
+   */
   async function editPost(id, userIdPost, editPostText, week, topic) {
     const newObj = {
       id: id,
@@ -90,7 +127,7 @@ function App() {
     <div className="app">
       <NavBar />
       <CreatePost handleClick={handleClick} />
-      <Filters postDB={postDB} setPostDB={setPostDB}/>
+      <Filters postDB={postDB} setPostDB={setPostDB} />
       <Display editPost={editPost} postDB={postDB} deletePost={deletePost} />
     </div>
   );
