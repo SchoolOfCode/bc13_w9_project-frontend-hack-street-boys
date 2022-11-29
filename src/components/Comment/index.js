@@ -1,6 +1,10 @@
 import "./index.css";
 import { useState } from "react";
-
+/**
+ * Some documented component
+ *
+ * @component
+ */
 function Comment({
   editComment,
   userId,
@@ -14,6 +18,9 @@ function Comment({
   const [editButtonText, setEditButtonText] = useState('✏️')
   const [editableClass, setEditableClass] = useState("not-editable");
 
+  /**
+   * Does something else
+   */
   function handleClick() {
     if (canEdit === true) {
       editComment(commentId, userId, postId, editCommentText);

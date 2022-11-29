@@ -4,6 +4,9 @@ import "./index.css";
 function AddComment({ createComment, postId }) {
   const [addComment, setAddComment] = useState("");
 
+  /**
+   * Handles new comment
+   */
   function handleNewComment() {
     createComment(addComment, postId);
     setAddComment('')
