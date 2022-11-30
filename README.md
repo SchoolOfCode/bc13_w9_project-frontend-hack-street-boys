@@ -13,10 +13,9 @@ https://user-images.githubusercontent.com/109949748/204586268-69821000-ab2e-45c1
 - DropDown Filters
 - All CRUD functions
 
-
 ## Optimizations
 
-- Seperations of concerns 
+- Seperations of concerns
 - Sensible naming
 - Comments to improve readability
 
@@ -28,25 +27,25 @@ https://user-images.githubusercontent.com/109949748/204586268-69821000-ab2e-45c1
 
 **DataBase:** PostgreSQL
 
-
 ## Future Features
 
 Given an additional sprint we would like to add:
 
 - Login functionality
-    - To enable only logged-in users to send a post.
-    - Only enable logged in users to edit/delete their post.
+  - To enable only logged-in users to send a post.
+  - Only enable logged in users to edit/delete their post.
 - Reset button to reset dropdown options.
-
 
 ## Lessons Learned
 
-What did you learn while building this project? 
-- To be able to connet the Front-end and the Back-End 
+What did you learn while building this project?
+
+- To be able to connet the Front-end and the Back-End
 - Wroking as part of an agile team.
 - How to work on branches and merge them in a branch.
 
 What challenges did you face and how did you overcome them?
+
 - Timeframe with regards to some tasks was unclear.
 
 ## Authors
@@ -56,3 +55,4 @@ What challenges did you face and how did you overcome them?
 - [@Joegitrussell](https://www.github.com/Joegitrussell)
 - [@Mohamed1104](https://www.github.com/Mohamed1104)
 
+.
