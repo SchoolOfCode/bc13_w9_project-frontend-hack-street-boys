@@ -54,7 +54,3 @@ What challenges did you face and how did you overcome them?
 - [@lewisgormanneale](https://www.github.com/lewisgormanneale)
 - [@Joegitrussell](https://www.github.com/Joegitrussell)
 - [@Mohamed1104](https://www.github.com/Mohamed1104)
-
-.
-..
-...
