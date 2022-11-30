@@ -2,16 +2,27 @@ import React from "react";
 import { useState } from "react";
 import './index.css'
 
+/**
+ * Renders the input filed and dropdown options for posts
+ * @param {function} handleClick
+ * @component
+ */
+
 export default function CreatePost({ handleClick }) {
   const [topic, setTopic] = useState("");
   const [week, setWeek] = useState("");
   const [post, setPost] = useState("");
 
+  /**
+   * calls handleClick which calls createPost function
+   * resets the input fields to blank
+   */
+
   function handleNewPost() {
     handleClick(topic, week, post);
-    setTopic('')
-    setWeek('')
-    setPost('')
+    setTopic("");
+    setWeek("");
+    setPost("");
   }
   return (
     <div className="create-post">
@@ -19,10 +30,10 @@ export default function CreatePost({ handleClick }) {
         <div className="post-details">
           <select
             value={week}
-              onChange={(e) => {
-                setWeek(e.target.value);
-              }}
-              placeholder="Week"
+            onChange={(e) => {
+              setWeek(e.target.value);
+            }}
+            placeholder="Week"
           >
             <option>Week</option>
             <option>1</option>
@@ -36,13 +47,12 @@ export default function CreatePost({ handleClick }) {
           </select>
           <input
             value={topic}
-              onChange={(e) => {
-                setTopic(e.target.value);
-              }}
-              type="text"
-              placeholder="Enter Topic..."
-            >
-          </input>
+            onChange={(e) => {
+              setTopic(e.target.value);
+            }}
+            type="text"
+            placeholder="Enter Topic..."
+          ></input>
         </div>
         <div>
           <button onClick={handleNewPost}>Create Post</button>
@@ -50,13 +60,12 @@ export default function CreatePost({ handleClick }) {
       </div>
       <textarea
         value={post}
-          onChange={(e) => {
-            setPost(e.target.value);
-          }}
-          type="text"
-          placeholder="Write a New Post Here..."
-        >
-        </textarea>
+        onChange={(e) => {
+          setPost(e.target.value);
+        }}
+        type="text"
+        placeholder="Write a New Post Here..."
+      ></textarea>
     </div>
   );
 }

@@ -1,15 +1,24 @@
 import { useState } from "react";
 import "./index.css";
 
+/**
+ * Function takes the user input and the postId to create a comment linked to that post.
+ * @param {string}  createComment
+ * @param {number} postId
+ * @component 
+ */
+
 function AddComment({ createComment, postId }) {
   const [addComment, setAddComment] = useState("");
 
   /**
-   * Handles new comment
+   * Function is called after user presses submit on commnet
+   * Calls function createComment with POSTS the comment to DB
+   * resets the input fields to blank
    */
   function handleNewComment() {
     createComment(addComment, postId);
-    setAddComment('')
+    setAddComment("");
   }
 
   return (

@@ -1,8 +1,13 @@
 import "./index.css";
 import { useState } from "react";
 /**
- * Some documented component
- *
+ * Displays the comment linked to relevent post
+ * @param {function} editComment 
+ * @param {function} deleteComment 
+ * @param {number} userId 
+ * @param {number} postId 
+ * @param {number} commentId
+ * @param {string} comment
  * @component
  */
 function Comment({
@@ -15,17 +20,18 @@ function Comment({
 }) {
   const [canEdit, setCanEdit] = useState(false);
   const [editCommentText, setEditCommentText] = useState(comment);
-  const [editButtonText, setEditButtonText] = useState('✏️')
+  const [editButtonText, setEditButtonText] = useState("✏️");
   const [editableClass, setEditableClass] = useState("not-editable");
 
   /**
-   * Does something else
+   * Function toggles the edit state of the comment field.
    */
+
   function handleClick() {
     if (canEdit === true) {
       editComment(commentId, userId, postId, editCommentText);
       setCanEdit(!canEdit);
-      setEditButtonText('✏️');
+      setEditButtonText("✏️");
       setEditableClass("not-editable");
     } else {
       setCanEdit(!canEdit);
@@ -44,16 +50,15 @@ function Comment({
         {comment}
       </p>
       <div className="comment-buttons">
-      <button onClick={handleClick}>{editButtonText}</button>
-      <button
-        onClick={() => {
-          deleteComment(commentId);
-        }}
-      >
-        ❌
-      </button>
+        <button onClick={handleClick}>{editButtonText}</button>
+        <button
+          onClick={() => {
+            deleteComment(commentId);
+          }}
+        >
+          ❌
+        </button>
       </div>
-    
     </div>
   );
 }

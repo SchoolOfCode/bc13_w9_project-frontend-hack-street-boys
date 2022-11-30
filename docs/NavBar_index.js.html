@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: AddComment/index.js</title>
+    <title>JSDoc: Source: NavBar/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: AddComment/index.js</h1>
+    <h1 class="page-title">Source: NavBar/index.js</h1>
 
     
 
@@ -26,47 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { useState } from "react";
-import "./index.css";
+            <pre class="prettyprint source linenums"><code>import "./index.css";
 
 /**
- * Function takes the user input and the postId to create a comment linked to that post.
- * @param {string}  createComment
- * @param {number} postId
+ * Renders the navbar with login/register buttons (not functional yet!)
  * @component 
  */
 
-function AddComment({ createComment, postId }) {
-  const [addComment, setAddComment] = useState("");
-
-  /**
-   * Function is called after user presses submit on commnet
-   * Calls function createComment with POSTS the comment to DB
-   * resets the input fields to blank
-   */
-  function handleNewComment() {
-    createComment(addComment, postId);
-    setAddComment("");
-  }
-
+function NavBar() {
   return (
-    &lt;form className="add-comment">
-      &lt;input
-        value={addComment}
-        onChange={(e) => {
-          setAddComment(e.target.value);
-        }}
-        type="text"
-        placeholder="Add a New Comment.."
-      >&lt;/input>
-      &lt;button type="button" onClick={handleNewComment}>
-        New Comment
-      &lt;/button>
-    &lt;/form>
+    &lt;header className="navbar">
+      &lt;div>
+        &lt;img className="logo" src = "https://d33wubrfki0l68.cloudfront.net/e6fddcbea146f91d2f3c160f7d56a9391a4740b0/4e758/static/logo-51c754388b198e5bbb0d08a971ebbfa2.png" width= "100" height = "auto" alt = "SoC logo">&lt;/img>
+        &lt;h1>School Of Code Study Hub&lt;/h1>
+      &lt;/div>
+      &lt;div>
+        &lt;button>Register&lt;/button>
+        &lt;button>Login&lt;/button>
+      &lt;/div>
+    &lt;/header>
   );
 }
 
-export default AddComment;
+export default NavBar;
 </code></pre>
         </article>
     </section>

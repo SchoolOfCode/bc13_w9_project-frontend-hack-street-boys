@@ -7,7 +7,9 @@ import Filters from "../Filters";
 
 /**
  * App Component
- *
+ * Top Level component Tree for all components
+ * Endpoint for the HTML 
+ * Where all the CRUD requests for postDB take place
  * @component
  */
 

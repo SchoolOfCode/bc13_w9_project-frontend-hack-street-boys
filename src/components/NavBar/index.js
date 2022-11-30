@@ -1,5 +1,10 @@
 import "./index.css";
 
+/**
+ * Renders the navbar with login/register buttons (not functional yet!)
+ * @component 
+ */
+
 function NavBar() {
   return (
     <header className="navbar">

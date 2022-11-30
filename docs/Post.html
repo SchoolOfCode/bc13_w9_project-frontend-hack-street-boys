@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Comment</title>
+    <title>JSDoc: Class: Post</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Comment</h1>
+    <h1 class="page-title">Class: Post</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Comment<span class="signature">(editComment, deleteComment, userId, postId, commentId, comment)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Post<span class="signature">(setCommentDB, comments, topic, postText, week, id, createComment, deleteComment, deletePost, editComment, userIdPost, editPost, checkComments)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="Comment"><span class="type-signature"></span>new Comment<span class="signature">(editComment, deleteComment, userId, postId, commentId, comment)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Post"><span class="type-signature"></span>new Post<span class="signature">(setCommentDB, comments, topic, postText, week, id, createComment, deleteComment, deletePost, editComment, userIdPost, editPost, checkComments)</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,7 +49,8 @@
 
 
 <div class="description">
-    <p>Displays the comment linked to relevent post</p>
+    <p>Renders the addcomment and comment component
+Input for post</p>
 </div>
 
 
@@ -85,7 +86,145 @@
 
         <tr>
             
-                <td class="name"><code>editComment</code></td>
+                <td class="name"><code>setCommentDB</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>comments</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>topic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>postText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>week</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createComment</code></td>
             
 
             <td class="type">
@@ -131,7 +270,53 @@
 
         <tr>
             
-                <td class="name"><code>userId</code></td>
+                <td class="name"><code>deletePost</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>editComment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userIdPost</code></td>
             
 
             <td class="type">
@@ -154,13 +339,13 @@
 
         <tr>
             
-                <td class="name"><code>postId</code></td>
+                <td class="name"><code>editPost</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">function</span>
 
 
             
@@ -177,36 +362,13 @@
 
         <tr>
             
-                <td class="name"><code>commentId</code></td>
+                <td class="name"><code>checkComments</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>comment</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+<span class="param-type">function</span>
 
 
             
@@ -257,7 +419,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comment_index.js.html">Comment/index.js</a>, <a href="Comment_index.js.html#line13">line 13</a>
+        <a href="Post_index.js.html">Post/index.js</a>, <a href="Post_index.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -313,7 +475,7 @@
     
 
     
-    <h4 class="name" id="~handleClick"><span class="type-signature">(inner) </span>handleClick<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~handlePostEdit"><span class="type-signature">(inner) </span>handlePostEdit<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -365,7 +527,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comment_index.js.html">Comment/index.js</a>, <a href="Comment_index.js.html#line30">line 30</a>
+        <a href="Post_index.js.html">Post/index.js</a>, <a href="Post_index.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
