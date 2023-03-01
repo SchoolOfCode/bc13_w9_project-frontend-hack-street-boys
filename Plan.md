@@ -1,7 +1,6 @@
 # Build a static Version
 
-npm i to download cypress dependancys
----
+## npm i to download cypress dependancys
 
 > NavBar
 
@@ -168,4 +167,4 @@ setPostDB(data.payload);
 };
 
 Create a function in display that is propped down
-if canEdit is true and button is true - inside of toggle it does a patch request. 
+if canEdit is true and button is true - inside of toggle it does a patch request
