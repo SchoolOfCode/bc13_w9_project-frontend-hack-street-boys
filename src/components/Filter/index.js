@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import Select from "react-select";
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Filter({ postDB, setPostDB }) {
   const [topicOption, setTopicOption] = useState("");
@@ -65,7 +65,9 @@ export default function Filter({ postDB, setPostDB }) {
 
   //Filter out the selected topic dropdown in postDB
   const handleTopic = async (selected) => {
-    const response = await fetch(`http://localhost:3001/api/posts`);
+    const response = await fetch(
+      `https://hack-street-boys-backend.onrender.com/api/posts`
+    );
     const data = await response.json();
     const payload = data.payload;
     const dropDownTopic = payload.filter((obj) => {
@@ -97,7 +99,9 @@ export default function Filter({ postDB, setPostDB }) {
 
   //Filters out the selected week dropdown in postDB
   const handleWeek = async (selected) => {
-    const response = await fetch(`http://localhost:3001/api/posts`);
+    const response = await fetch(
+      `https://hack-street-boys-backend.onrender.com/api/posts`
+    );
     const data = await response.json();
     const payload = data.payload;
     const dropDownWeek = payload.filter((obj) => {
